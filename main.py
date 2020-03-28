@@ -94,8 +94,8 @@ def gencon(nc,nodes):
             for a in range(3):
                 for b in range(3):
                     if (i-1+a>-1 and i-1+a<12 and j-1+b>-1 and j-1+b<12)  :
-
-                        nebhr.append( [i-1+a,j-1+b])
+                        if not(i-1+a==i and j-1+b==j):
+                            nebhr.append( [i-1+a,j-1+b])
 
             nebhr=random.sample(nebhr,2)
             for c in range(len(nebhr)):
@@ -172,11 +172,17 @@ while Running:
         font = pygame.font.Font('freesansbold.ttf', 40)
         end = font.render("YOU DIED", True, (255,255, 255), (0, 0, 0))
         screen.blit(end, (300, 500))
-    if num>19:
+        pygame.display.flip()
+        time.sleep(10)
+
+    if num>18:
 
         font = pygame.font.Font('freesansbold.ttf', 40)
         end = font.render("YOU ESCAPED", True, (255,255, 255), (0, 0, 0))
         screen.blit(end, (300, 500))
+        pygame.display.flip()
+        time.sleep(10)
+
     num=num+1
     flag=True
     while flag:
